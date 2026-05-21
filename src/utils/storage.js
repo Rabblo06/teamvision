@@ -40,8 +40,6 @@ export const saveLevelResult = (levelId, stars, score, correct, total) => {
   if (score > prevScore) {
     state.totalScore += (score - prevScore);
     state.levelBestScores[levelId] = score;
-  } else if (prevScore === 0) {
-    state.totalScore += score;
   }
 
   const nextId = levelId + 1;

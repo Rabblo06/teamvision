@@ -5,15 +5,7 @@ import { LEVELS, BADGES } from '../data/levels';
 const Profile = ({ onBack }) => {
   const state   = getState();
   const earned  = BADGES.filter(b => state.badges.includes(b.id));
-  const totalPossible = LEVELS.length * 30; // 3 stars × 10pts × levels
   const completedLevels = state.completedLevels.length;
-  const accuracy = completedLevels === 0 ? 0 :
-    Math.round(
-      LEVELS.reduce((acc, l) => {
-        const best = state.levelBestScores[l.id] || 0;
-        return acc + (best / 10);
-      }, 0) / (completedLevels * LEVELS[0]?.questions?.length || completedLevels) * 100
-    ) || 0;
 
   return (
     <div className="profile-screen">

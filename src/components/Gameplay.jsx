@@ -70,6 +70,7 @@ const Gameplay = ({ levelId, soundEnabled, onComplete, onQuit }) => {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, qIdx]);
 
   const handleAnswer = useCallback((answer, timedOut = false) => {
@@ -90,16 +91,14 @@ const Gameplay = ({ levelId, soundEnabled, onComplete, onQuit }) => {
 
   const handleNext = useCallback(() => {
     if (qIdx + 1 >= total) {
-      const fc = correct ? correctCount + 1 : correctCount;
-      const finalScore = correct ? score : score;
       onComplete({
         levelId,
-        score: finalScore,
+        score,
         maxScore: total * 10,
-        correct: fc,
+        correct: correctCount,
         total,
-        stars: calcStars(fc, total),
-        accuracy: calcAccuracy(fc, total),
+        stars: calcStars(correctCount, total),
+        accuracy: calcAccuracy(correctCount, total),
         hintsUsed: hintsTotal,
       });
     } else {

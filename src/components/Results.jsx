@@ -1,24 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 import { getLevelById } from '../data/levels';
 import { getStarMessage, getGrade } from '../utils/scoring';
 
+const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#a855f7', '#ef4444', '#ffffff'];
+
 const Confetti = () => {
-  const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#a855f7', '#ef4444', '#ffffff'];
+  const pieces = useMemo(() =>
+    Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      background: COLORS[Math.floor(Math.random() * COLORS.length)],
+      animationDelay: `${Math.random() * 2}s`,
+      animationDuration: `${2 + Math.random() * 2}s`,
+      width: `${6 + Math.random() * 8}px`,
+      height: `${6 + Math.random() * 8}px`,
+    }))
+  , []);
+
   return (
     <div className="confetti-container" aria-hidden="true">
-      {Array.from({ length: 50 }, (_, i) => (
-        <div
-          key={i}
-          className="confetti-piece"
-          style={{
-            left: `${Math.random() * 100}%`,
-            background: COLORS[Math.floor(Math.random() * COLORS.length)],
-            animationDelay: `${Math.random() * 2}s`,
-            animationDuration: `${2 + Math.random() * 2}s`,
-            width: `${6 + Math.random() * 8}px`,
-            height: `${6 + Math.random() * 8}px`,
-          }}
-        />
+      {pieces.map(p => (
+        <div key={p.id} className="confetti-piece" style={p} />
       ))}
     </div>
   );
