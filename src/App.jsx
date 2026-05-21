@@ -11,6 +11,7 @@ import Profile from './components/Profile';
 import Badges from './components/Badges';
 import Settings from './components/Settings';
 import HowToPlay from './components/HowToPlay';
+import AgileInfo from './components/AgileInfo';
 
 const App = () => {
   const [screen, setScreen] = useState('home');
@@ -43,7 +44,7 @@ const App = () => {
   const renderScreen = () => {
     switch (screen) {
       case 'home':
-        return <Home onStart={() => navigate('map')} onHowToPlay={() => navigate('howtoplay')} />;
+        return <Home onStart={() => navigate('map')} onHowToPlay={() => navigate('howtoplay')} onAgile={() => navigate('agile')} />;
       case 'map':
         return <MissionMap onSelectLevel={(id) => navigate('gameplay', { levelId: id })} />;
       case 'gameplay':
@@ -77,6 +78,8 @@ const App = () => {
         );
       case 'howtoplay':
         return <HowToPlay onBack={() => navigate(prevScreenRef.current || 'home')} />;
+      case 'agile':
+        return <AgileInfo onBack={() => navigate(prevScreenRef.current || 'home')} />;
       default:
         return <Home onStart={() => navigate('map')} onHowToPlay={() => navigate('howtoplay')} />;
     }

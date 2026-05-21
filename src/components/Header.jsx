@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { id: 'badges',   label: 'Badges',      icon: '🏅' },
   { id: 'settings', label: 'Settings',    icon: '⚙️' },
   { id: 'howtoplay',label: 'Help',        icon: '❓' },
+  { id: 'agile',    label: 'Agile',       icon: '🔄' },
 ];
 
 const Header = ({ screen, onNav, soundEnabled, onToggleSound }) => (

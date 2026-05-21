@@ -11,7 +11,7 @@ const FEATURES = [
   { icon: '🏆', title: '12 Levels', desc: 'Progress from beginner to cyber champion with increasing challenges and real-life scenarios.' },
 ];
 
-const Home = ({ onStart, onHowToPlay }) => {
+const Home = ({ onStart, onHowToPlay, onAgile }) => {
   const state = getState();
   const completed = state.completedLevels.length;
   const pct = Math.round((completed / LEVELS.length) * 100);
@@ -38,6 +38,9 @@ const Home = ({ onStart, onHowToPlay }) => {
           </button>
           <button className="btn-secondary btn-large" onClick={onHowToPlay}>
             ❓ How It Works
+          </button>
+          <button className="btn-secondary btn-large" onClick={onAgile}>
+            🔄 Agile Process
           </button>
         </div>
 

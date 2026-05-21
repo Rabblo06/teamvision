@@ -1022,6 +1022,139 @@ main.with-header { padding-top: 72px; }
   .profile-stats-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* ─── Agile Info Screen ─────────────────────────────────────────────────── */
+.agile-screen {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+}
+
+.agile-title {
+  font-size: 2rem; font-weight: 800; color: var(--text-primary);
+  text-align: center; margin-bottom: 0.75rem;
+}
+
+.agile-intro {
+  color: var(--text-secondary); text-align: center; max-width: 680px;
+  margin: 0 auto 2.5rem; font-size: 1.05rem; line-height: 1.7;
+}
+
+.agile-intro strong { color: var(--accent-blue); }
+
+.agile-section { margin-bottom: 3rem; }
+
+.agile-section-desc {
+  color: var(--text-secondary); margin-bottom: 1.25rem; font-size: 0.95rem;
+}
+
+/* Principles grid */
+.agile-principles-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+
+.agile-principle-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 1.25rem; text-align: center;
+}
+
+.agile-principle-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.agile-principle-title { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; }
+.agile-principle-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+/* Sprint cards */
+.agile-sprints-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.agile-sprint-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--sprint-color, var(--accent-blue));
+  border-radius: var(--radius-md); padding: 1rem 1.25rem;
+  text-align: left; width: 100%; cursor: pointer; transition: background 0.15s;
+}
+
+.agile-sprint-card:hover { background: var(--bg-card-hover); }
+.agile-sprint-card--active { background: var(--bg-card-hover); }
+
+.sprint-card-header {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+
+.sprint-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+.sprint-card-meta { flex: 1; }
+.sprint-number { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; }
+.sprint-card-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+
+.sprint-chevron { font-size: 0.7rem; color: var(--text-muted); }
+
+.sprint-card-body { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+.sprint-goal { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+
+.sprint-task-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+
+.sprint-task-item {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.88rem; color: var(--text-secondary);
+}
+
+.sprint-task-check { color: var(--accent-green); font-size: 0.85rem; margin-top: 0.1rem; flex-shrink: 0; }
+
+.sprint-delivered {
+  margin-top: 0.85rem; padding: 0.6rem 0.9rem;
+  background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--accent-green);
+}
+
+.sprint-delivered-label { font-weight: 700; margin-right: 0.35rem; }
+
+/* User stories table */
+.agile-stories-table {
+  border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;
+}
+
+.stories-table-header {
+  display: grid; grid-template-columns: 80px 1fr 90px;
+  background: var(--bg-surface); padding: 0.65rem 1rem;
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-muted); gap: 1rem;
+}
+
+.stories-table-row {
+  display: grid; grid-template-columns: 80px 1fr 90px;
+  padding: 0.65rem 1rem; gap: 1rem;
+  border-top: 1px solid var(--border); align-items: center;
+  font-size: 0.88rem;
+}
+
+.stories-table-row:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+.story-id { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-blue); }
+.story-text { color: var(--text-secondary); }
+.story-priority { font-weight: 700; font-size: 0.8rem; }
+
+/* Summary stats bar */
+.agile-summary {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.5rem; flex-wrap: wrap;
+}
+
+.agile-stat { text-align: center; padding: 0 2rem; }
+.agile-stat-num { display: block; font-size: 2.5rem; font-weight: 900; color: var(--accent-blue); }
+.agile-stat-lbl { font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.agile-stat-divider { width: 1px; height: 48px; background: var(--border); }
+
+@media (max-width: 700px) {
+  .agile-principles-grid { grid-template-columns: 1fr 1fr; }
+  .stories-table-header, .stories-table-row { grid-template-columns: 70px 1fr 70px; font-size: 0.78rem; }
+  .agile-stat { padding: 0 1rem; }
+  .agile-stat-num { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+  .agile-principles-grid { grid-template-columns: 1fr; }
+  .agile-summary { gap: 1rem; }
+  .agile-stat-divider { display: none; }
+}
+
 /* ─── Focus Visible (Accessibility) ────────────────────────────────────── */
 :focus-visible {
   outline: 3px solid var(--accent-blue);
